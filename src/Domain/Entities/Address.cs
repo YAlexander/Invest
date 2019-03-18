@@ -1,8 +1,10 @@
-﻿namespace Domain.Entities
+﻿using Abstractions.Entities;
+
+namespace Domain.Entities
 {
-	public class Address : BaseEntity
+	public class Address : BaseEntity, IAddress
 	{
-		public int Country { get; set; }
+		public string Country { get; set; }
 
 		public string Region { get; set; }
 
@@ -10,6 +12,8 @@
 
 		public string Street { get; set; }
 
-		public string Zip { get; set; }
+		public string PostCode { get; set; }
+
+		public string ZipExt { get; set; }
 	}
 }

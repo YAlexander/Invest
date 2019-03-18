@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Abstractions.Codes
+namespace Abstractions.Entities
 {
 	public interface IEntity
 	{

@@ -1,5 +1,5 @@
 ﻿using System;
-using Abstractions.Codes;
+using Abstractions.Entities;
 
 namespace Domain.Entities
 {
