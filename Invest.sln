@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invest.Site", "src\Invest.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invest.Backend", "src\Invest.Backend\Invest.Backend.csproj", "{01BFE70C-D3C6-4239-BE1D-F0894C987F6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invest.Backend.Grains", "Invest.Backend.Grains\Invest.Backend.Grains.csproj", "{9241B833-0B2C-4EA4-ADDB-E138E197C2DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invest.Backend.Grains", "src\Invest.Backend.Grains\Invest.Backend.Grains.csproj", "{9241B833-0B2C-4EA4-ADDB-E138E197C2DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invest.Backend.Infrastructure", "src\Invest.Backend.Infrastructure\Invest.Backend.Infrastructure.csproj", "{50A57DC5-316F-4403-B9CA-F6F19401C0C5}"
 EndProject
