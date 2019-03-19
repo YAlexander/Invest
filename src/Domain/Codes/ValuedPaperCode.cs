@@ -8,7 +8,7 @@ namespace Domain.Codes
 		{
 		}
 
-		public static ValuedPaperCode Unknown { get; } = new ValuedPaperCode("Unknown", "Unknown");
+		public static ValuedPaperCode Unknown { get; } = new ValuedPaperCode("U", "Unknown");
 
 		public static ValuedPaperCode CorporateBond { get; } = new ValuedPaperCode("B", "Corporate Bond");
 

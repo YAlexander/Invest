@@ -9,7 +9,7 @@ namespace Abstractions.Entities
 		/// <summary>
 		/// 2-letter country code
 		/// </summary>
-		string Country { get; set; }
+		string CountryCode { get; set; }
 
 		/// <summary>
 		/// Region name
