@@ -23,6 +23,7 @@ namespace Invest.Site
 				.ConfigureWebHostDefaults(webBuilder =>
 				{
 					webBuilder.UseStartup<Startup>();
+					webBuilder.UseIIS();
 				});
 	}
 }

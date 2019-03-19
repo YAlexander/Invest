@@ -1,6 +1,6 @@
 ﻿using Domain.Codes;
 
-namespace Domain.Entities
+namespace Domain.Entities.ValuedPapers
 {
 	public abstract class ValuedPaper : BaseEntity
 	{
