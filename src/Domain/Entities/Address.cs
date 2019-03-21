@@ -32,6 +32,6 @@ namespace Domain.Entities
 		/// <summary>
 		/// Extension for Zip code
 		/// </summary>
-		public string ZipExt { get; set; }
+		public string? ZipExt { get; set; }
 	}
 }

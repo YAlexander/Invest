@@ -60,7 +60,7 @@ namespace Domain.Codes
 		/// <summary>
 		/// Creates code instance from its code representation
 		/// </summary>
-		public static TTypeCode Create (T code, TTypeCode defaultValue)
+		public static TTypeCode Create (T code)
 		{
 			if (!AllTypes.ContainsKey(code))
 			{
