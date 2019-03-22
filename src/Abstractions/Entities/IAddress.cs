@@ -34,6 +34,6 @@ namespace Abstractions.Entities
 		/// <summary>
 		/// Extension for Zip code
 		/// </summary>
-		string ZipExt { get; set; }
+		string? ZipExt { get; set; }
 	}
 }
