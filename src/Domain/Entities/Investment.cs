@@ -1,4 +1,5 @@
-﻿using Domain.Codes;
+﻿using System;
+using Domain.Codes;
 
 namespace Domain.Entities
 {
@@ -9,6 +10,16 @@ namespace Domain.Entities
 		/// </summary>
 		public string InvestmentCode { get; set; }
 		public long InvestmentOwner { get; set; }
+
+		/// <summary>
+		/// Start funds collecting from date
+		/// </summary>
+		public DateTime? StartDate { get; set; }
+
+		/// <summary>
+		/// Collecting active till date 
+		/// </summary>
+		public DateTime TillDate { get; set; }
 
 		public int InvestmentTypeCode { get; set; }
 
