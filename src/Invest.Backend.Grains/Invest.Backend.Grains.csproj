@@ -14,12 +14,27 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Orleans.Core.Abstractions" Version="2.3.0" />
-    <PackageReference Include="Npgsql" Version="4.0.5" />
+    <PackageReference Include="Npgsql" Version="4.1.0-ci.1634" />
   </ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\Abstractions\Abstractions.csproj" />
 		<ProjectReference Include="..\Domain\Domain.csproj" />
 		<ProjectReference Include="..\Invest.Backend.Infrastructure\Invest.Backend.Infrastructure.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+	    <HintPath>C:\Program Files\dotnet\packs\Microsoft.AspNetCore.App.Ref\3.0.0-preview4-19151-11\ref\netcoreapp3.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Microsoft.Extensions.Options">
+	    <HintPath>C:\Program Files\dotnet\packs\Microsoft.AspNetCore.App.Ref\3.0.0-preview4-19151-11\ref\netcoreapp3.0\Microsoft.Extensions.Options.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Orleans.Core">
+	    <HintPath>C:\Users\alexe\.nuget\packages\microsoft.orleans.core\2.3.0\lib\netstandard2.0\Orleans.Core.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Orleans.Runtime.Abstractions">
+	    <HintPath>C:\Users\alexe\.nuget\packages\microsoft.orleans.runtime.abstractions\2.3.0\lib\netstandard2.0\Orleans.Runtime.Abstractions.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 </Project>

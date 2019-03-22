@@ -8,33 +8,34 @@ using Domain.Entities;
 
 namespace Invest.Backend.Infrastructure.Database.Repositories
 {
-	public class TransactionsRepository : IRepository<Transaction>
+	public class InvoicesRepository : IRepository<Invoice>
 	{
-		public async Task<long?> Create (Transaction entity, IDbConnection connection, IDbTransaction transaction)
+		public async Task<long?> Create (Invoice entity, IDbConnection connection, IDbTransaction transaction)
 		{
 			return await connection.QueryFirstOrDefaultAsync<long?>(CREATE,
 				new
 				{
 					created = entity.Created,
-					accountId = entity.AccountId,
-					transactionCode = entity.TransactionCode,
-					transactionType = entity.TransactionType,
+					sellerId = entity.SellerId,
+					buyerId = entity.BuyerId,
+					validTill = entity.ValidTill,
 					statusCode = entity.StatusCode,
 					currencyCode = entity.CurrencyCode,
-					amount = entity.Amount,
-					description = entity.Description
+					totalAmount = entity.TotalAmount,
+					tax = entity.Tax,
+					discount = entity.Discount
 				}, transaction);
 		}
 
 		/// <summary>
 		/// Get transaction by Id
 		/// </summary>
-		public async Task<Transaction> Get (long id, IDbConnection connection, IDbTransaction transaction)
+		public async Task<Invoice> Get (long id, IDbConnection connection, IDbTransaction transaction)
 		{
-			return await connection.QueryFirstOrDefaultAsync<Transaction>(GET_BY_ID, new { id = id }, transaction);
+			return await connection.QueryFirstOrDefaultAsync<Invoice>(GET_BY_ID, new { id = id }, transaction);
 		}
 
-		public async Task<IEnumerable<Transaction>> Get (IFilter filter, IDbConnection connection, IDbTransaction transaction)
+		public async Task<IEnumerable<Invoice>> Get (IFilter filter, IDbConnection connection, IDbTransaction transaction)
 		{
 			throw new NotImplementedException();
 		}
@@ -44,14 +45,21 @@ namespace Invest.Backend.Infrastructure.Database.Repositories
 			return await connection.ExecuteAsync(MARK_AS_DELETED, new { id = id }, transaction) > 0;
 		}
 
-		public async Task<Transaction> Update (Transaction entity, IDbConnection connection, IDbTransaction transaction)
+		public async Task<Invoice> Update (Invoice entity, IDbConnection connection, IDbTransaction transaction)
 		{
-			return await connection.QueryFirstOrDefaultAsync<Transaction>(UPDATE,
+			return await connection.QueryFirstOrDefaultAsync<Invoice>(UPDATE,
 				new
 				{
 					id = entity.Id,
+					created = entity.Created,
+					sellerId = entity.SellerId,
+					buyerId = entity.BuyerId,
+					validTill = entity.ValidTill,
 					statusCode = entity.StatusCode,
-					description = entity.Description
+					currencyCode = entity.CurrencyCode,
+					totalAmount = entity.TotalAmount,
+					tax = entity.Tax,
+					discount = entity.Discount
 				}, transaction);
 		}
 
@@ -75,50 +83,56 @@ namespace Invest.Backend.Infrastructure.Database.Repositories
 			return await connection.QueryAsync<IEnumerable<dynamic>>(query, parameters);
 		}
 
-		private string GET_BY_ID = @"SELECT * FROM Transactions WHERE id = @id";
+		private string GET_BY_ID = @"SELECT * FROM Invoices WHERE id = @id";
 
-		private string MARK_AS_DELETED = @"UPDATE Transactions SET isDeleted = true WHERE id = @id";
+		private string MARK_AS_DELETED = @"UPDATE Invoices SET isDeleted = true WHERE id = @id";
 
 		private string CREATE = @"INSERT INTO
-									Transactions
+									Invoices
 									(
 										id,
 										created,
 										isDeleted,
-										accountId,
-										transactionCode,
-										transactionType,
+										sellerId,
+										buyerId,
+										validTill,
 										statusCode,
 										currencyCode,
-										amount,
-										description
+										totalAmount,
+										tax,
+										discount
 									)
 								VALUES
 									(
 										default,
 										@created,
 										false,
-										@accountId,
-										@transactionCode,
-										@transactionType,
-										@statusCode,
-										@currencyCode,
-										@amount,
-										@description
+										sellerId,
+										buyerId,
+										validTill,
+										statusCode,
+										currencyCode,
+										totalAmount,
+										tax,
+										discount
 									)
 								RETURNING
 									id;";
 
 		private string UPDATE = @"UPDATE
-									Transactions
+									Invoices
 								SET
+									validTill = @validTill,
 									statusCode = @statusCode,
-									description = @description
+									currencyCode = @currencyCode,
+									totalAmount = @totalAmount,
+									tax = @tax,
+									discount = @discount
 								WHERE
 									id = @id
 								RETURNING
 									*;";
 
-		private string GET_FILTERED = @"SELECT * FROM Transactions {where} ORDER BY {field} {direction} OFFSET {offset} LIMIT {limit};";
+		private string GET_FILTERED = @"SELECT * FROM Invoices {where} ORDER BY {field} {direction} OFFSET {offset} LIMIT {limit};";
 	}
 }

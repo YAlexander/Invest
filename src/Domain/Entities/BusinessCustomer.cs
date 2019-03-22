@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities
 {
-	public class CompanyCustomer : Customer
+	public class BusinessCustomer : Customer
 	{
 		public override bool IsCompany { get; set; } = true;
 

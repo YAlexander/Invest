@@ -4,5 +4,6 @@ namespace Abstractions.Infrastructure
 {
 	public interface ITransactionsManager : IDatabaseManager<ITransaction>
 	{
+		
 	}
 }

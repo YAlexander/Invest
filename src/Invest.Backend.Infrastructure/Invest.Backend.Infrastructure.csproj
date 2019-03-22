@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="1.60.1" />
-    <PackageReference Include="Npgsql" Version="4.0.5" />
+    <PackageReference Include="Npgsql" Version="4.1.0-ci.1634" />
   </ItemGroup>
 
   <ItemGroup>

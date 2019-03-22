@@ -8,33 +8,32 @@ using Domain.Entities;
 
 namespace Invest.Backend.Infrastructure.Database.Repositories
 {
-	public class TransactionsRepository : IRepository<Transaction>
+	public class AddressRepository : IRepository<Address>
 	{
-		public async Task<long?> Create (Transaction entity, IDbConnection connection, IDbTransaction transaction)
+		public async Task<long?> Create (Address entity, IDbConnection connection, IDbTransaction transaction)
 		{
 			return await connection.QueryFirstOrDefaultAsync<long?>(CREATE,
 				new
 				{
 					created = entity.Created,
-					accountId = entity.AccountId,
-					transactionCode = entity.TransactionCode,
-					transactionType = entity.TransactionType,
-					statusCode = entity.StatusCode,
-					currencyCode = entity.CurrencyCode,
-					amount = entity.Amount,
-					description = entity.Description
+					countryCode = entity.CountryCode,
+					region =entity.Region,
+					city = entity.City,
+					street = entity.Street,
+					postCode = entity.PostCode,
+					zipExt = entity.ZipExt
 				}, transaction);
 		}
 
 		/// <summary>
 		/// Get transaction by Id
 		/// </summary>
-		public async Task<Transaction> Get (long id, IDbConnection connection, IDbTransaction transaction)
+		public async Task<Address> Get (long id, IDbConnection connection, IDbTransaction transaction)
 		{
-			return await connection.QueryFirstOrDefaultAsync<Transaction>(GET_BY_ID, new { id = id }, transaction);
+			return await connection.QueryFirstOrDefaultAsync<Address>(GET_BY_ID, new { id = id }, transaction);
 		}
 
-		public async Task<IEnumerable<Transaction>> Get (IFilter filter, IDbConnection connection, IDbTransaction transaction)
+		public async Task<IEnumerable<Address>> Get (IFilter filter, IDbConnection connection, IDbTransaction transaction)
 		{
 			throw new NotImplementedException();
 		}
@@ -44,14 +43,19 @@ namespace Invest.Backend.Infrastructure.Database.Repositories
 			return await connection.ExecuteAsync(MARK_AS_DELETED, new { id = id }, transaction) > 0;
 		}
 
-		public async Task<Transaction> Update (Transaction entity, IDbConnection connection, IDbTransaction transaction)
+		public async Task<Address> Update (Address entity, IDbConnection connection, IDbTransaction transaction)
 		{
-			return await connection.QueryFirstOrDefaultAsync<Transaction>(UPDATE,
+			return await connection.QueryFirstOrDefaultAsync<Address>(UPDATE,
 				new
 				{
 					id = entity.Id,
-					statusCode = entity.StatusCode,
-					description = entity.Description
+					created = entity.Created,
+					countryCode = entity.CountryCode,
+					region = entity.Region,
+					city = entity.City,
+					street = entity.Street,
+					postCode = entity.PostCode,
+					zipExt = entity.ZipExt
 				}, transaction);
 		}
 
@@ -75,50 +79,52 @@ namespace Invest.Backend.Infrastructure.Database.Repositories
 			return await connection.QueryAsync<IEnumerable<dynamic>>(query, parameters);
 		}
 
-		private string GET_BY_ID = @"SELECT * FROM Transactions WHERE id = @id";
+		private string GET_BY_ID = @"SELECT * FROM Addresses WHERE id = @id";
 
-		private string MARK_AS_DELETED = @"UPDATE Transactions SET isDeleted = true WHERE id = @id";
+		private string MARK_AS_DELETED = @"UPDATE Addresses SET isDeleted = true WHERE id = @id";
 
 		private string CREATE = @"INSERT INTO
-									Transactions
+									Addresses
 									(
 										id,
 										created,
 										isDeleted,
-										accountId,
-										transactionCode,
-										transactionType,
-										statusCode,
-										currencyCode,
-										amount,
-										description
+										countryCode,
+										region,
+										city,
+										street,
+										postCode,
+										zipExt
 									)
 								VALUES
 									(
 										default,
 										@created,
 										false,
-										@accountId,
-										@transactionCode,
-										@transactionType,
-										@statusCode,
-										@currencyCode,
-										@amount,
-										@description
+										@countryCode,
+										@region,
+										@city,
+										@street,
+										@postCode,
+										@zipExt
 									)
 								RETURNING
 									id;";
 
 		private string UPDATE = @"UPDATE
-									Transactions
+									Addresses
 								SET
-									statusCode = @statusCode,
-									description = @description
+									countryCode = @countryCode,
+									region = @region,
+									city = @city,
+									street = @street,
+									postCode = @postCode,
+									zipExt = @zipExt
 								WHERE
 									id = @id
 								RETURNING
 									*;";
 
-		private string GET_FILTERED = @"SELECT * FROM Transactions {where} ORDER BY {field} {direction} OFFSET {offset} LIMIT {limit};";
+		private string GET_FILTERED = @"SELECT * FROM Addresses {where} ORDER BY {field} {direction} OFFSET {offset} LIMIT {limit};";
 	}
 }

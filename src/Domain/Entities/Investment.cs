@@ -5,6 +5,8 @@ namespace Domain.Entities
 {
 	public class Investment : BaseEntity
 	{
+		public bool IsPublished { get; set; }
+
 		/// <summary>
 		/// Unique public number of investment
 		/// </summary>
