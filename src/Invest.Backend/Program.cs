@@ -22,8 +22,7 @@ namespace Invest.Backend
 					.UseOrleans((context, siloBuilder) =>
 					{
 						siloBuilder
-							.ConfigureApplicationParts(
-								parts => parts.AddFromApplicationBaseDirectory().WithReferences())
+							.ConfigureApplicationParts(parts => parts.AddFromApplicationBaseDirectory().WithReferences())
 							.Configure<ClusterOptions>(options =>
 							{
 								options.ClusterId = "InvestorApp";

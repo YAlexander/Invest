@@ -1,8 +1,12 @@
+using System.Text;
+using Invest.Site.Core.Configuration;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Invest.Site
 {
@@ -15,21 +19,39 @@ namespace Invest.Site
 
 		public IConfiguration Configuration { get; }
 
-		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices (IServiceCollection services)
 		{
+			var appSettingsSection = Configuration.GetSection("AppSettings");
+			services.Configure<AppSettings>(appSettingsSection);
+
 			services.Configure<CookiePolicyOptions>(options =>
 			{
-				// This lambda determines whether user consent for non-essential cookies is needed for a given request.
 				options.CheckConsentNeeded = context => true;
 			});
 
+			services.AddMvc().AddNewtonsoftJson();
 
-			services.AddMvc()
-				.AddNewtonsoftJson();
+			AppSettings appSettings = appSettingsSection.Get<AppSettings>();
+			byte[] key = Encoding.ASCII.GetBytes(appSettings.Secret);
+			services.AddAuthentication(x =>
+				{
+					x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+					x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+				})
+				.AddJwtBearer(x =>
+				{
+					x.RequireHttpsMetadata = true;
+					x.SaveToken = true;
+					x.TokenValidationParameters = new TokenValidationParameters
+					{
+						ValidateIssuerSigningKey = true,
+						IssuerSigningKey = new SymmetricSecurityKey(key),
+						ValidateIssuer = false,
+						ValidateAudience = false
+					};
+				});
 		}
 
-		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure (IApplicationBuilder app, IWebHostEnvironment env)
 		{
 			if (env.IsDevelopment())
@@ -39,9 +61,13 @@ namespace Invest.Site
 			else
 			{
 				app.UseExceptionHandler("/Home/Error");
-				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 				app.UseHsts();
 			}
+
+			app.UseCors(x => x
+				.AllowAnyOrigin()
+				.AllowAnyMethod()
+				.AllowAnyHeader());
 
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
@@ -55,7 +81,6 @@ namespace Invest.Site
 			});
 
 			app.UseCookiePolicy();
-
 			app.UseAuthorization();
 		}
 	}
