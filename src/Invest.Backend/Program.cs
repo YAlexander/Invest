@@ -3,6 +3,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Invest.Backend.Grains.Providers.Storage;
 using Microsoft.Extensions.Hosting;
+using NLog.Extensions.Logging;
 using Orleans;
 using Orleans.Configuration;
 using Orleans.Hosting;
@@ -17,10 +18,12 @@ namespace Invest.Backend
 		{
 			try
 			{
-				IHostBuilder host = new HostBuilder()
+				IHost host = new HostBuilder()
 					.UseOrleans((context, siloBuilder) =>
 					{
 						siloBuilder
+							.ConfigureApplicationParts(
+								parts => parts.AddFromApplicationBaseDirectory().WithReferences())
 							.Configure<ClusterOptions>(options =>
 							{
 								options.ClusterId = "InvestorApp";
@@ -39,26 +42,26 @@ namespace Invest.Backend
 							}))
 							.ConfigureServices(services =>
 							{
-								services.AddSingleton<AppConfig>(configuration);
-							})
-							.AddGenericGrainStorage<AssetStorageProvider>(nameof(AssetStorageProvider), opt =>
-							{
-								opt.Configure(options => { options.ConnectionString = ""; });
+								services.AddDashboard(options =>
+								{
+									//options.Username = "USERNAME";
+									//options.Password = "PASSWORD";
+									options.Host = "*";
+									options.Port = 3128;
+									options.HostSelf = true;
+									options.CounterUpdateIntervalMs = 5000;
+								});
+								services.AddServicesForSelfHostedDashboard();
+								//services.AddSingleton<AppConfig>(configuration);
 							})
 							.Configure<GrainVersioningOptions>(options =>
 							{
 								options.DefaultCompatibilityStrategy = nameof(BackwardCompatible);
 								options.DefaultVersionSelectorStrategy = nameof(MinimumVersion);
 							})
-							.ConfigureApplicationParts(parts => parts.AddFromApplicationBaseDirectory().WithReferences())
-							.UseDashboard(options =>
+							.AddGenericGrainStorage<AssetStorageProvider>(nameof(AssetStorageProvider), opt =>
 							{
-								//options.Username = "USERNAME";
-								//options.Password = "PASSWORD";
-								options.Host = "*";
-								options.Port = 3128;
-								options.HostSelf = true;
-								options.CounterUpdateIntervalMs = 5000;
+								opt.Configure(options => { options.ConnectionString = ""; });
 							});
 					})
 					.Build();
