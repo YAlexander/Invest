@@ -7,11 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="8.1.3" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.4.0" />
     <PackageReference Include="Microsoft.Orleans.Client" Version="2.3.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Abstractions\Abstractions.csproj" />
+    <Folder Include="Validators\" />
   </ItemGroup>
 
 </Project>
