@@ -2,6 +2,10 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/invest",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:50546",
       "sslPort": 44385
@@ -9,18 +13,19 @@
   },
   "profiles": {
     "IIS Express": {
-      "commandName": "IISExpress",
+      "commandName": "IIS",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "Invest.Site": {
-      "commandName": "Project",
+      "commandName": "IIS",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
+      "ancmHostingModel": "InProcess",
       "applicationUrl": "https://localhost:5001;http://localhost:5000"
     },
     "Docker": {
