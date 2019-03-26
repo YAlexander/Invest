@@ -9,6 +9,23 @@
 	autoplayHoverPause: true
 });
 
+$('#property-carousel').owlCarousel({
+	loop: true,
+	margin: 30,
+	responsive: {
+		0: {
+			items: 1,
+		},
+		769: {
+			items: 2,
+		},
+		992: {
+			items: 3,
+		}
+	}
+});
+
+
 $('.intro-carousel').on('translate.owl.carousel', function () {
 	$('.intro-content .intro-title').removeClass('zoomIn animated').hide();
 	$('.intro-content .intro-price').removeClass('fadeInUp animated').hide();
