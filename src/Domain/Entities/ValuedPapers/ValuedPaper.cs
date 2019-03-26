@@ -12,7 +12,7 @@ namespace Domain.Entities.ValuedPapers
 		/// <summary>
 		/// Valued parer series (is part of Number)
 		/// </summary>
-		public string Series { get; set; }
+		public string? Series { get; set; }
 
 		/// <summary>
 		/// Valued paper number (is part of Number)
@@ -22,6 +22,6 @@ namespace Domain.Entities.ValuedPapers
 		/// <summary>
 		/// Valued paper issuer name
 		/// </summary>
-		public string Issuer { get; set; }
+		public string? Issuer { get; set; }
 	}
 }
