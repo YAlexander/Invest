@@ -74,6 +74,12 @@ namespace Invest.Site
 
 			app.UseRouting(routes =>
 			{
+				routes.MapAreaControllerRoute(
+					name: "areas",
+					areaName: "Admin",
+					template: "Admin/{controller=Dashboard}/{action=Index}/{id?}"
+				);
+
 				routes.MapControllerRoute(
 					name: "default",
 					template: "{controller=Home}/{action=Index}/{id?}");

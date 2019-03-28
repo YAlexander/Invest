@@ -8,11 +8,11 @@
 
 		public bool IsInvestor { get; set; }
 
-		public string Email { get; set; }
+		public string Email { get; set; } = string.Empty;
 
 		public bool IsEmailVerified { get; set; }
 
-		public string Phone { get; set; }
+		public string? Phone { get; set; }
 
 		public bool IsPhoneVerified { get; set; }
 	}

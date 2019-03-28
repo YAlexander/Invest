@@ -6,7 +6,7 @@ namespace Invest.Site.Core.DTOs
 	{
 		public long Id { get; set; }
 
-		public long ValuedPaperId { get; set; }
+		public DateTime Created { get; set; }
 
 		public int StatusCode { get; set; }
 
