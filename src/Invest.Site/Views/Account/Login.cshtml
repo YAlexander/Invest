@@ -1,0 +1,46 @@
+﻿@model Invest.Site.Core.DTOs.LoginDTO
+
+@{
+	ViewData["Title"] = "Login";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="log-in ptb-100 ptb-sm-60">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="well mb-sm-30">
+					<div class="new-customer">
+						<h3 class="custom-title">Create account</h3>
+						<p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made</p>
+						<a class="customer-btn" href="register.html">continue</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="well">
+					<div class="return-customer">
+						<h3 class="mb-10 custom-title">Sign in</h3>
+						<form action="#">
+							<div class="form-group">
+								<label>Email</label>
+								<input type="text" name="email" placeholder="Enter your email address..." id="input-email" class="form-control">
+							</div>
+							<div class="form-group">
+								<label>Password</label>
+								<input type="text" name="pass" placeholder="Password" id="input-password" class="form-control">
+							</div>
+
+							<div class="row">
+								<div class="col-6"><input type="submit" value="Login" class="btn btn-b-n"></div>
+								<div class="col-6">
+									<p class="lost-password"><a href="forgot-password.html">Forgot password?</a></p>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
