@@ -14,6 +14,7 @@ namespace Invest.Site.Controllers
 
 		[AllowAnonymous]
 		[HttpGet]
+		[Route("Login")]
 		public async Task<IActionResult> Login ()
 		{
 			LoginDTO model = new LoginDTO();
@@ -23,6 +24,7 @@ namespace Invest.Site.Controllers
 		[AllowAnonymous]
 		[HttpPost]
 		[ValidateAntiForgeryToken]
+		[Route("Login")]
 		public async Task<IActionResult> Login (LoginDTO model)
 		{
 			if (ModelState.IsValid)
@@ -35,6 +37,7 @@ namespace Invest.Site.Controllers
 
 		[AllowAnonymous]
 		[HttpGet]
+		[Route("Register")]
 		public async Task<IActionResult> Register()
 		{
 			RegisterDTO model = new RegisterDTO();
@@ -44,6 +47,7 @@ namespace Invest.Site.Controllers
 		[AllowAnonymous]
 		[HttpPost]
 		[ValidateAntiForgeryToken]
+		[Route("Register")]
 		public async Task<IActionResult> Register(RegisterDTO model)
 		{
 			if (ModelState.IsValid)
@@ -55,6 +59,7 @@ namespace Invest.Site.Controllers
 		}
 
 		[AllowAnonymous]
+		[Route("Password/Reset")]
 		public async Task<IActionResult> PasswordReset (string? email = null)
 		{
 			if (email != null)
