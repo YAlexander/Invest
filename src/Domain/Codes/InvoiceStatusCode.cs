@@ -1,6 +1,8 @@
-﻿namespace Domain.Codes
+﻿using Abstractions.Codes;
+
+namespace Domain.Codes
 {
-	public class InvoiceStatusCode : TypeCodeBase<int, InvoiceStatusCode>
+	public class InvoiceStatusCode : TypeCodeBase<int, InvoiceStatusCode>, IInvoiceStatusCode
 	{
 		public InvoiceStatusCode(int code, string description) : base(code, description)
 		{

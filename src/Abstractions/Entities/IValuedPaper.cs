@@ -1,6 +1,6 @@
 ﻿namespace Abstractions.Entities
 {
-	public interface IValuedPaper
+	public interface IValuedPaper : IEntity
 	{
 		string Code { get; }
 		string? Series { get; set; }

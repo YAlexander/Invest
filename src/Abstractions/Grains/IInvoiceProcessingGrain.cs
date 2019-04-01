@@ -5,6 +5,6 @@ namespace Abstractions.Grains
 {
 	public interface IInvoiceProcessingGrain : IGrainWithIntegerKey
 	{
-		long? InvoiceShares(IEnumerable<long> ids);
+		long? Create (IEnumerable<long> ids);
 	}
 }

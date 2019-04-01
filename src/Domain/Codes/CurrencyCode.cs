@@ -14,6 +14,8 @@ namespace Domain.Codes
 			Symbol = symbol;
 		}
 
+		public static CurrencyCode UNKNOWN { get; } = new CurrencyCode("UNKNOWN", "Unknown currency or incorrect code", -1, "");
+
 		public static CurrencyCode USD { get; } = new CurrencyCode("USD", "US Dollar", 840, "$");
 
 		public static CurrencyCode EUR { get; } = new CurrencyCode("EUR", "Euro", 978, "€");

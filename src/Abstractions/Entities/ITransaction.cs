@@ -2,7 +2,7 @@
 {
 	public interface ITransaction : IEntity
 	{
-		long AccountId { get; set; }
+		long WalletId { get; set; }
 
 		/// <summary>
 		/// Transaction code equals Transaction Grain Id
