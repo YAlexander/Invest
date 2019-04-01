@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Domain.Codes;
 
 namespace Invest.Site.Core.Models
 {
@@ -13,8 +14,8 @@ namespace Invest.Site.Core.Models
 
 		public CustomerDTO Customer { get; set; } = new CustomerDTO();
 
-		public int Status { get; set; }
-		public int InvestmentType { get; set; }
+		public InvestmentStatusCode Status { get; set; }
+		public InvestmentTypeCode InvestmentType { get; set; }
 
 		public DateTime? StartDate { get; set; }
 		public DateTime TillDate { get; set; }

@@ -2,9 +2,9 @@
 
 namespace Domain.Codes
 {
-	public sealed class TransactionTypeCode : TypeCodeBase<int, TransactionTypeCode>, ITransactionCode
+	public sealed class TransactionTypeTypeCode : TypeCodeBase<int, TransactionTypeTypeCode>, ITransactionTypeCode
 	{
-		public TransactionTypeCode (int code, string description) : base(code, description)
+		public TransactionTypeTypeCode (int code, string description) : base(code, description)
 		{
 		}
 
@@ -15,7 +15,7 @@ namespace Domain.Codes
 		/// inaccessible for use at other outlets or ATMs, is governed by the recommendations
 		/// of the payment system
 		/// </summary>
-		public static TransactionTypeCode AUTHORIZATION { get; } = new TransactionTypeCode(10, "AUTHORIZATION");
+		public static TransactionTypeTypeCode AUTHORIZATION { get; } = new TransactionTypeTypeCode(10, "AUTHORIZATION");
 
 		/// <summary>
 		/// Allows you to Withdraw the previously reserved amount of money from the card and
@@ -25,75 +25,75 @@ namespace Domain.Codes
 		/// known in advance what amount of money will be required to be debited from the buyer's
 		/// card, and whether
 		/// </summary>
-		public static TransactionTypeCode CAPTURE { get; } = new TransactionTypeCode(20, "CAPTURE");
+		public static TransactionTypeTypeCode CAPTURE { get; } = new TransactionTypeTypeCode(20, "CAPTURE");
 
 		/// <summary>
 		/// Allows to release the reserved amount immediately, without waiting for it to be done
 		/// automatically after the end of the blocking period
 		/// </summary>
-		public static TransactionTypeCode VOID { get; } = new TransactionTypeCode(30, "VOID");
+		public static TransactionTypeTypeCode VOID { get; } = new TransactionTypeTypeCode(30, "VOID");
 
 		/// <summary>
 		/// Allows you to cancel a previously received payment and return the money to the buyer on
 		/// the bank card with which they were once debited
 		/// </summary>
-		public static TransactionTypeCode REFUND { get; } = new TransactionTypeCode(40, "REFUND");
+		public static TransactionTypeTypeCode REFUND { get; } = new TransactionTypeTypeCode(40, "REFUND");
 
 		/// <summary>
 		/// Transaction to account for payments that have been challenged by buyers or bank card
 		/// holders by contacting their issuing banks
 		/// </summary>
-		public static TransactionTypeCode CHARGEBACK { get; } = new TransactionTypeCode(50, "CHARGEBACK");
+		public static TransactionTypeTypeCode CHARGEBACK { get; } = new TransactionTypeTypeCode(50, "CHARGEBACK");
 
 		/// <summary>
 		/// The transaction allows you to make any amount of payment on any bank card
 		/// </summary>
-		public static TransactionTypeCode PAYOUT { get; } = new TransactionTypeCode(60, "PAYOUT");
+		public static TransactionTypeTypeCode PAYOUT { get; } = new TransactionTypeTypeCode(60, "PAYOUT");
 
 		/// <summary>
 		/// Uses to transfer money to a bank payment card. It is required to have a successful initial
 		/// incoming payment made using the card to which the money is supposed to be sent.
 		/// </summary>
-		public static TransactionTypeCode CREDIT { get; } = new TransactionTypeCode(70, "CREDIT");
+		public static TransactionTypeTypeCode CREDIT { get; } = new TransactionTypeTypeCode(70, "CREDIT");
 
 		/// <summary>
 		/// Basic transaction that allows you to accept payment from the buyer in one action
 		/// </summary>
-		public static TransactionTypeCode PAYMENT { get; } = new TransactionTypeCode(80, "PAYMENT");
+		public static TransactionTypeTypeCode PAYMENT { get; } = new TransactionTypeTypeCode(80, "PAYMENT");
 
 		/// <summary>
 		/// Recurring payment
 		/// </summary>
-		public static TransactionTypeCode RECURRING { get; } = new TransactionTypeCode(90, "RECURRING");
+		public static TransactionTypeTypeCode RECURRING { get; } = new TransactionTypeTypeCode(90, "RECURRING");
 
 		/// <summary>
 		/// Deposit or withdrawal of funds through a paper check
 		/// </summary>
-		public static TransactionTypeCode CHECK { get; } = new TransactionTypeCode(100, "CHECK");
+		public static TransactionTypeTypeCode CHECK { get; } = new TransactionTypeTypeCode(100, "CHECK");
 
 		/// <summary>
 		/// Deposit funds to the account
 		/// </summary>
-		public static TransactionTypeCode DEPOSIT { get; } = new TransactionTypeCode(110, "DEPOSIT");
+		public static TransactionTypeTypeCode DEPOSIT { get; } = new TransactionTypeTypeCode(110, "DEPOSIT");
 
 		/// <summary>
 		/// Transfer funds between your accounts
 		/// </summary>
-		public static TransactionTypeCode TRANSFER { get; } = new TransactionTypeCode(120, "TRANSFER");
+		public static TransactionTypeTypeCode TRANSFER { get; } = new TransactionTypeTypeCode(120, "TRANSFER");
 
 		/// <summary>
 		/// Deposit or withdrawal of funds through an ATM
 		/// </summary>
-		public static TransactionTypeCode ATM { get; } = new TransactionTypeCode(130, "ATM");
+		public static TransactionTypeTypeCode ATM { get; } = new TransactionTypeTypeCode(130, "ATM");
 
 		/// <summary>
 		/// Cash in or out
 		/// </summary>
-		public static TransactionTypeCode CASH { get; } = new TransactionTypeCode(140, "CASH");
+		public static TransactionTypeTypeCode CASH { get; } = new TransactionTypeTypeCode(140, "CASH");
 
 		/// <summary>
 		/// Withdrawal of the funds
 		/// </summary>
-		public static TransactionTypeCode WITHDRAWAL { get; } = new TransactionTypeCode(150, "WITHDRAWAL");
+		public static TransactionTypeTypeCode WITHDRAWAL { get; } = new TransactionTypeTypeCode(150, "WITHDRAWAL");
 	}
 }

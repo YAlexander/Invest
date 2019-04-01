@@ -3,7 +3,7 @@ using Domain.Entities.ValuedPapers;
 
 namespace Invest.Backend.Infrastructure.Database.Managers
 {
-	public class VoucherValuedPapersManager : IValuedPapersManager<Voucher>
+	public class VoucherValuedPapersManager : ValuedPapersManager<Voucher>
 	{
 	}
 }

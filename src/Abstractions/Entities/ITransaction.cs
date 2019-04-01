@@ -4,6 +4,9 @@
 	{
 		long AccountId { get; set; }
 
+		/// <summary>
+		/// Transaction code equals Transaction Grain Id
+		/// </summary>
 		string TransactionCode { get; set; }
 
 		int TransactionType { get; set; }

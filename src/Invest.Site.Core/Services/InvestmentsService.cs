@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Abstractions.Entities;
 using Abstractions.Grains;
 using Abstractions.Grains.StateModels;
 using Invest.Site.Core.Helpers.Mappers;
@@ -18,7 +19,7 @@ namespace Invest.Site.Core.Services
 
 		public async Task<InvestmentDTO> Get(long id)
 		{
-			IInvestmentGrain grain = _client.GetGrain<IInvestmentGrain>(id);
+			IInvestmentGrain<IInvestmentState> grain = _client.GetGrain<IInvestmentGrain<IInvestmentState>>(id);
 			IInvestmentState investment = await grain.Get();
 			InvestmentDTO model = investment.ToModel();
 			return model;

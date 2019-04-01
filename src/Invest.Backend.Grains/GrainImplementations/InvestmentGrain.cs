@@ -8,7 +8,7 @@ namespace Invest.Backend.Grains.GrainImplementations
 {
 	public class InvestmentGrain : Grain<InvestmentState>, IInvestmentGrain
 	{
-		public Task<IInvestmentState> Get()
+		public Task<IInvestmentState> Get ()
 		{
 			return Task.FromResult((IInvestmentState)this.State);
 		}
