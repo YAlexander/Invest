@@ -1,8 +1,9 @@
-﻿using Domain.Codes;
+﻿using Abstractions.Entities;
+using Domain.Codes;
 
 namespace Domain.Entities.ValuedPapers
 {
-	public abstract class ValuedPaper : BaseEntity
+	public abstract class ValuedPaper : BaseEntity, IValuedPaper
 	{
 		/// <summary>
 		/// Valued paper type code <see cref="ValuedPaperCode"/>
