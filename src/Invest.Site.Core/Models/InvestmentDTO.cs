@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Invest.Site.Core.DTOs
+namespace Invest.Site.Core.Models
 {
 	public class InvestmentDTO
 	{

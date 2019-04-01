@@ -4,6 +4,6 @@
 	{
 		public override bool IsCompany { get; set; } = true;
 
-		public string CompanyName { get; set; }
+		public string CompanyName { get; set; } = string.Empty;
 	}
 }

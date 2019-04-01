@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Invest.Site.Core.DTOs;
+using Invest.Site.Core.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

@@ -44,6 +44,5 @@
 
 	<ItemGroup>
 	  <Folder Include="Helpers\" />
-	  <Folder Include="GrainImplementations\" />
 	</ItemGroup>
 </Project>

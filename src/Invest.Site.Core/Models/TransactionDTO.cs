@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Invest.Site.Core.DTOs
+namespace Invest.Site.Core.Models
 {
 	public class TransactionDTO
 	{

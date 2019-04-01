@@ -20,8 +20,4 @@
     <PackageReference Include="Microsoft.Orleans.Core.Abstractions" Version="2.3.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Grains\StateDTO\" />
-  </ItemGroup>
-
 </Project>

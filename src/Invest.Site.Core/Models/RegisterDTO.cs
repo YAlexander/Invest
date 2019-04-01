@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Security.Cryptography.X509Certificates;
 
-namespace Invest.Site.Core.DTOs
+namespace Invest.Site.Core.Models
 {
 	public class RegisterDTO
 	{
