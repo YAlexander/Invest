@@ -3,7 +3,7 @@ using Orleans;
 
 namespace Abstractions.Grains
 {
-	public interface IValuedPaperGrain<out T> : IGrainWithIntegerKey
+	public interface IValuedPaperGrain<out T> : IGrainWithIntegerCompoundKey
 	{
 		T Get ();
 	}

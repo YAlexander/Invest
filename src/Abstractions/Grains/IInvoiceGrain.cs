@@ -1,4 +1,5 @@
-﻿using Abstractions.Grains.StateModels;
+﻿using System.Threading.Tasks;
+using Abstractions.Grains.StateModels;
 using Orleans;
 
 namespace Abstractions.Grains
@@ -7,6 +8,6 @@ namespace Abstractions.Grains
 	{
 		IInvoiceState Get ();
 
-		IInvoiceState Update(IInvoiceState invoice);
+		Task<IInvoiceState> Update(IInvoiceState invoice);
 	}
 }

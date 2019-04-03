@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
+using System.Threading.Tasks;
 
 namespace Abstractions.Infrastructure.Database
 {
@@ -8,31 +9,36 @@ namespace Abstractions.Infrastructure.Database
 		/// <summary>
 		/// Create database record
 		/// </summary>
-		long? Create (T item, IDbConnection connection, IDbTransaction transaction);
+		Task<long?> Create (T item, IDbConnection connection, IDbTransaction transaction);
 
 		/// <summary>
 		/// Delete record
 		/// </summary>
-		bool Delete (long id, IDbConnection connection, IDbTransaction transaction);
+		Task<bool> Delete (long id, IDbConnection connection, IDbTransaction transaction);
 
 		/// <summary>
 		/// UpdateRecord
 		/// </summary>
-		T Update (long id, T item, IDbConnection connection, IDbTransaction transaction);
+		Task<T> Update (long id, T item, IDbConnection connection, IDbTransaction transaction);
 
 		/// <summary>
 		/// Get record by Id
 		/// </summary>
-		T Get (long id, IDbConnection connection, IDbTransaction transaction);
+		Task<T> Get (long id, IDbConnection connection, IDbTransaction transaction);
 
 		/// <summary>
 		/// Get filtered list of records
 		/// </summary>
-		IEnumerable<T> Get (IFilter filter, IDbConnection connection, IDbTransaction transaction);
+		Task<IEnumerable<T>> Get (IDictionary<string, object> parameters, IDbConnection connection, IDbTransaction transaction);
 
 		/// <summary>
 		/// Execute custom query
 		/// </summary>
-		object Execute (string query, IFilter filter, IDbConnection connection, IDbTransaction transaction);
+		Task<IEnumerable<dynamic>> Execute (string query, IDictionary<string, object> parameters, IDbConnection connection, IDbTransaction transaction);
+
+		/// <summary>
+		/// Execute custom query
+		/// </summary>
+		Task<dynamic> ExecuteScalar (string query, IDictionary<string, object> parameters, IDbConnection connection, IDbTransaction transaction);
 	}
 }

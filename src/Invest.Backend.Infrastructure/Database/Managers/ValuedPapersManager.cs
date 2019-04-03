@@ -1,6 +1,6 @@
 ﻿using System;
 using Abstractions.Entities;
-using Abstractions.Infrastructure;
+using Abstractions.Infrastructure.Database;
 
 namespace Invest.Backend.Infrastructure.Database.Managers
 {

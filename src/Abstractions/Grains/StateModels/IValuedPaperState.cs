@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Abstractions.Grains.StateModels
 {
 	public interface IValuedPaperState
 	{
+		Dictionary<string, object> Details { get; set; }
 	}
 }

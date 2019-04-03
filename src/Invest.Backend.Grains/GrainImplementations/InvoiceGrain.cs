@@ -1,4 +1,5 @@
-﻿using Abstractions.Grains;
+﻿using System.Threading.Tasks;
+using Abstractions.Grains;
 using Abstractions.Grains.StateModels;
 using Invest.Backend.Grains.GrainImplementations.StateModels;
 using Orleans;
@@ -12,9 +13,11 @@ namespace Invest.Backend.Grains.GrainImplementations
 			throw new System.NotImplementedException();
 		}
 
-		public IInvoiceState Update(IInvoiceState invoice)
+		public async Task<IInvoiceState> Update(IInvoiceState invoice)
 		{
-			throw new System.NotImplementedException();
+			this.State = (InvoiceState)invoice;
+			await this.WriteStateAsync();
+			return this.State;
 		}
 	}
 }

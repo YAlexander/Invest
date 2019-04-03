@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
-using Abstractions.Infrastructure;
+using Abstractions.Infrastructure.Database;
 using Dapper;
 using Domain.Entities;
 
@@ -33,7 +33,7 @@ namespace Invest.Backend.Infrastructure.Database.Repositories
 			return await connection.QueryFirstOrDefaultAsync<Address>(GET_BY_ID, new { id = id }, transaction);
 		}
 
-		public async Task<IEnumerable<Address>> Get (IFilter filter, IDbConnection connection, IDbTransaction transaction)
+		public Task<IEnumerable<Address>> Get(IDictionary<string, object> parameters, IDbConnection connection, IDbTransaction transaction)
 		{
 			throw new NotImplementedException();
 		}
@@ -43,12 +43,12 @@ namespace Invest.Backend.Infrastructure.Database.Repositories
 			return await connection.ExecuteAsync(MARK_AS_DELETED, new { id = id }, transaction) > 0;
 		}
 
-		public async Task<Address> Update (Address entity, IDbConnection connection, IDbTransaction transaction)
+		public async Task<Address> Update (long id, Address entity, IDbConnection connection, IDbTransaction transaction)
 		{
 			return await connection.QueryFirstOrDefaultAsync<Address>(UPDATE,
 				new
 				{
-					id = entity.Id,
+					id = id,
 					created = entity.Created,
 					countryCode = entity.CountryCode,
 					region = entity.Region,
