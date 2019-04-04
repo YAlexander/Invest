@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Abstractions.Grains.StateModels
 {
-	public interface IAccountState
+	public interface IAccountState : IState
 	{
 	}
 }

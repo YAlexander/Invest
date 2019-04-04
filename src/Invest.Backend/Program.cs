@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
+using Abstractions.Grains.StateModels;
+using Abstractions.Infrastructure;
 using Invest.Backend.Grains.Providers.Storage;
+using Invest.Backend.Grains.Services;
 using Microsoft.Extensions.Hosting;
 using NLog.Extensions.Logging;
 using Orleans;
@@ -9,6 +12,7 @@ using Orleans.Configuration;
 using Orleans.Hosting;
 using Orleans.Versions.Compatibility;
 using Orleans.Versions.Selector;
+using stellar_dotnet_sdk;
 
 namespace Invest.Backend
 {
@@ -60,7 +64,11 @@ namespace Invest.Backend
 							})
 							.AddGenericGrainStorage<AssetStorageProvider>(nameof(AssetStorageProvider), opt =>
 							{
-								opt.Configure(options => { options.ConnectionString = ""; });
+								opt.Configure(options =>
+								{
+									options.ConnectionString = "";
+									options.StorageService = new AssetService();
+								});
 							});
 					})
 					.Build();

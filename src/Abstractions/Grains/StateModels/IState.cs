@@ -1,6 +1,6 @@
 ﻿namespace Abstractions.Grains.StateModels
 {
-	public interface IInvestmentState : IState
+	public interface IState
 	{
 	}
 }

@@ -1,21 +1,27 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Abstractions.Infrastructure;
+using Invest.Backend.Grains.GrainImplementations.StateModels;
 using Orleans;
 using Orleans.Providers;
 using Orleans.Runtime;
 using Orleans.Storage;
+using stellar_dotnet_sdk;
 
 namespace Invest.Backend.Grains.Providers.Storage
 {
 	// TODO: Storage provider example
 	public class AssetStorageProvider : IStorageProvider
 	{
+
 		//private AssetsProcessor assetProcessor;
 		private string _connectionString;
+		private IStorageService<ValuedPaperState> storageService;
 
-		public AssetStorageProvider(string connectionString)
+		public AssetStorageProvider(string connectionString, IStorageService<ValuedPaperState> storageService)
 		{
 			_connectionString = connectionString;
+			this.storageService = storageService;
 		}
 
 		public Task ReadStateAsync(string grainType, GrainReference grainReference, IGrainState grainState)

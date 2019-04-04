@@ -41,8 +41,4 @@
 	    <HintPath>C:\Users\alexe\.nuget\packages\microsoft.orleans.runtime.abstractions\2.3.0\lib\netstandard2.0\Orleans.Runtime.Abstractions.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Helpers\" />
-	</ItemGroup>
 </Project>

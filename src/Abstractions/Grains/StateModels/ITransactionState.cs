@@ -5,7 +5,7 @@ using Abstractions.Codes;
 
 namespace Abstractions.Grains.StateModels
 {
-	public interface ITransactionState
+	public interface ITransactionState : IState
 	{
 		long AccountId { get; set; }
 

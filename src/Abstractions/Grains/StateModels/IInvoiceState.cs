@@ -3,7 +3,7 @@ using Abstractions.Codes;
 
 namespace Abstractions.Grains.StateModels
 {
-	public interface IInvoiceState
+	public interface IInvoiceState : IState
 	{
 		DateTime Created { get; set; }
 		DateTime? ValidTill { get; set; }
