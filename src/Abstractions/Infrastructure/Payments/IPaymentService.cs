@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Abstractions.Infrastructure
+namespace Abstractions.Infrastructure.Payments
 {
 	public interface IPaymentService
 	{

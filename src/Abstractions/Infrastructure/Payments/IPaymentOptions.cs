@@ -1,6 +1,6 @@
 ﻿using Abstractions.Codes;
 
-namespace Abstractions.Infrastructure
+namespace Abstractions.Infrastructure.Payments
 {
 	public interface IPaymentOptions
 	{
