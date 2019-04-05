@@ -6,7 +6,6 @@ using Orleans;
 using Orleans.Providers;
 using Orleans.Runtime;
 using Orleans.Storage;
-using stellar_dotnet_sdk;
 
 namespace Invest.Backend.Grains.Providers.Storage
 {
